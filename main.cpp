@@ -8,14 +8,14 @@ public:
 
 //Variables:
   //money:
-    int *money;
-    int daily_profit;
-    int maintenance_cost;
+    int money = 500;
+    int daily_profit = 0;
+    int maintenance_cost = 0;
 
   //number of:
-    int *num_of_visitors;
-    int num_of_employees; 
-    int num_of_attractions;
+    int num_of_visitors = 0;
+    int num_of_employees = 0; 
+    int num_of_attractions = 0;
     
 //Functions:
 
@@ -31,23 +31,26 @@ public:
 // }
 
 int main(){
+int save_num;
+std::cout << "What save are you using?\n Save 1\n Save 2\n Save 3\n";
+std::cin >> save_num;
   //variables:
     //input:
       int userinput;
-
-    //money:
-      int money = 500;
   
     //other:
       std::string amusement_park_name;
-      int num_of_visitors = 0;
       std::vector<std::string> attractions;
-      int *values[5];
+      int *values[6];
   
   //initialization
-    amusement_park ap;
-    ap.money = &money;
-    ap.num_of_visitors = &num_of_visitors;
+    amusement_park ap_saves[3];
+    values[0] = &ap_saves[save_num].money;
+    values[1] = &ap_saves[save_num].num_of_visitors;
+    values[2] = &ap_saves[save_num].num_of_employees;
+    values[3] = &ap_saves[save_num].daily_profit;
+    values[4] = &ap_saves[save_num].maintenance_cost;
+    values[5] = &ap_saves[save_num].num_of_attractions;
   
   //Startup screen:
   std::cout << "Welcome to Amusement Park Tycoon\n\nTo start, enter the name of the amusement park\n";
@@ -56,8 +59,8 @@ int main(){
   
   //Pre-Menu:
   std::cout << "Welcome to " << amusement_park_name;
-  std::cout << "\nYou have $" << money; //Showing amount of money
-  std::cout << "\nThere are " << num_of_visitors << " visitors\n"; //Showing number of visitors
+  std::cout << "\nYou have $" << *values[0]; //Showing amount of money
+  std::cout << "\nThere are " << *values[1] << " visitors\n"; //Showing number of visitors
   
   //Menu:
   std::cout << "What do you want to do?\n";
